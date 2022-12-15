@@ -16,11 +16,14 @@ HUBAPIKEY=${13}
 LICENSEKEY=${14}
 DATABASECHANGELOGTABLENAME=${15}
 DATABASECHANGELOGLOCKTABLENAME=${16}
+CHANGELOGPARAMETERS=${17}
 
 PARAMS=()
 VALUES=()
 # Liquibase requires some parameters to come after the command name, those parameters should be added to this list.
 SECONDPARAMS=()
+
+CHANGELOGPARAMS=()
 
 function check_required_param() {
     local OP=$1
@@ -60,6 +63,7 @@ function check_optional_param() {
         fi
     fi
 }
+
 
 
 function validate_operation() {
@@ -217,4 +221,4 @@ check_optional_param "$OPERATION" hubApiKey $HUBAPIKEY
 check_optional_param "$OPERATION" licenseKey $LICENSEKEY
 validate_operation
 
-docker-entrypoint.sh "${PARAMS[@]}" $OPERATION "${VALUES[@]}" "${SECONDPARAMS[@]}"
+docker-entrypoint.sh "${PARAMS[@]}" $OPERATION "${VALUES[@]}" "${SECONDPARAMS[@]}" "${CHANGELOGPARAMS}"

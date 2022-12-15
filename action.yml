@@ -50,6 +50,9 @@ inputs:
   databaseChangeLogLockTableName: # string
     description: 'Specifies the Liquibase changelog lock table'
     required: false
+  changelogParameters: # string
+    description: 'Specifies -D option parameters i.e.: -Dparam1="one" -Dparam2="2"'
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -70,6 +73,7 @@ runs:
     - ${{ inputs.licenseKey }}
     - ${{ inputs.databaseChangeLogTableName }}
     - ${{ inputs.databaseChangeLogLockTableName }}
+    - ${{ inputs.changelogParameters }}
 branding:
   icon: database
   color: red
