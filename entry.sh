@@ -215,5 +215,7 @@ check_optional_param "$OPERATION" licenseKey $LICENSEKEY
 validate_operation
 
 echo "docker-entrypoint.sh ${PARAMS[@]} $OPERATION ${VALUES[@]} ${CHANGELOGPARAMETERS}"
+pwd
+ls -al
 
 docker-entrypoint.sh "${PARAMS[@]}" $OPERATION "${VALUES[@]}" "${CHANGELOGPARAMETERS}"
