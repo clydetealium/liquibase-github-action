@@ -23,8 +23,6 @@ VALUES=()
 # Liquibase requires some parameters to come after the command name, those parameters should be added to this list.
 SECONDPARAMS=()
 
-CHANGELOGPARAMS=()
-
 function check_required_param() {
     local OP=$1
     local KEY=$2
