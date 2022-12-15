@@ -202,11 +202,6 @@ function validate_operation() {
         check_required_param validate changeLogFile $CHANGELOGFILE
         ;;
 
-    "checks run")
-        check_required_param "checks run" changeLogFile $CHANGELOGFILE
-        check_required_param "checks run" checksSettingsFile $CHECKSSETTINGSFILE false true
-        ;;
-
     *)
         echo "$OPERATION is not a valid operation"
         exit 1
@@ -219,6 +214,6 @@ check_optional_param "$OPERATION" hubApiKey $HUBAPIKEY
 check_optional_param "$OPERATION" licenseKey $LICENSEKEY
 validate_operation
 
-echo "docker-entrypoint.sh ${PARAMS[@]} $OPERATION ${VALUES[@]} ${SECONDPARAMS[@]} ${CHANGELOGPARAMS}"
+echo "docker-entrypoint.sh ${PARAMS[@]} $OPERATION ${VALUES[@]} ${CHANGELOGPARAMETERS}"
 
-docker-entrypoint.sh "${PARAMS[@]}" $OPERATION "${VALUES[@]}" "${SECONDPARAMS[@]}" "${CHANGELOGPARAMS}"
+docker-entrypoint.sh "${PARAMS[@]}" $OPERATION "${VALUES[@]}" "${CHANGELOGPARAMETERS}"
